@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "OneLineDay",
+  "version": "1.0.0",
+  "description": "Reflect on your day in just one line. Receive daily reminders to write a brief, mindful reflection.",
+  "permissions": ["alarms", "notifications", "storage"],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
