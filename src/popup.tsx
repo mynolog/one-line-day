@@ -12,6 +12,10 @@ export default function Popup() {
   const [input, setInput] = useState('')
 
   const dateKey = dayjs(selectedDate).format('M월 D일')
+  const today = dayjs().startOf('day')
+  const selected = dayjs(selectedDate).startOf('day')
+
+  const isEditable = selected.isSame(today)
 
   useEffect(() => {
     const stored = localStorage.getItem('reflections')
@@ -57,13 +61,22 @@ export default function Popup() {
           rows={4}
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="✨ 오늘 하루를 간단히 돌아보며 한 줄 남겨보세요!"
+          placeholder={
+            isEditable
+              ? '✨ 오늘 하루를 간단히 돌아보며 한 줄 남겨보세요!'
+              : '지난 날짜는 수정할 수 없습니다.'
+          }
+          disabled={!isEditable}
         />
         <button
-          className="mt-3 w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-700 transition font-semibold"
+          className="mt-3 w-full py-2 rounded-md font-semibold transition
+         text-white
+         bg-blue-500 hover:bg-blue-700
+         disabled:bg-gray-300 disabled:cursor-not-allowed"
           onClick={handleSave}
+          disabled={!isEditable}
         >
-          저장
+          {isEditable ? '기록하기' : '수정 불가'}
         </button>
       </div>
     </div>

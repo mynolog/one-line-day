@@ -8,8 +8,17 @@
     "default_popup": "popup.html"
   },
   "icons": {
-    "16": "icons/icon-16x16.png",
-    "32": "icons/icon-32x32.png",
-    "96": "icons/icon-96x96.png"
-  }
+    "16": "icon-16x16.png",
+    "32": "icon-32x32.png",
+    "96": "icon-96x96.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icon-16x16.png", "icon-32x32.png", "icon-96x96.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
