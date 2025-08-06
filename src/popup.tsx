@@ -6,12 +6,12 @@ import './styles/Calendar.css'
 
 type Reflections = Record<string, string>
 
-export default function ReflectionCalendar() {
+export default function Popup() {
   const [selectedDate, setSelectedDate] = useState(new Date())
   const [reflections, setReflections] = useState<Reflections>({})
   const [input, setInput] = useState('')
 
-  const dateKey = dayjs(selectedDate).format('YYYY-MM-DD')
+  const dateKey = dayjs(selectedDate).format('M월 D일')
 
   useEffect(() => {
     const stored = localStorage.getItem('reflections')
@@ -49,7 +49,7 @@ export default function ReflectionCalendar() {
         }}
       />
       <div className="mt-4">
-        <p className="font-bold mb-2 text-gray-700">{dateKey} 회고</p>
+        <p className="font-bold mb-2 text-gray-700">{dateKey} 짧은 회고</p>
         <textarea
           className="w-full rounded-md border border-gray-300 p-3 text-sm resize-none
             shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400
@@ -57,7 +57,7 @@ export default function ReflectionCalendar() {
           rows={4}
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="오늘 하루를 한 줄로 회고해 보세요"
+          placeholder="✨ 오늘 하루를 간단히 돌아보며 한 줄 남겨보세요!"
         />
         <button
           className="mt-3 w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-700 transition font-semibold"
